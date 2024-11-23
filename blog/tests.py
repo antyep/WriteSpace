@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from .models import Post
 
 # Create your tests here.
 
@@ -11,4 +12,10 @@ class BlogTests(TestCase):
             username="testuser",
             email="test@email.com",
             password="secretpassword123",
+        )
+
+        cls.post = Post.objects.create(
+            title="A good title",
+            body="Creating nice body for you",
+            author=cls.user,
         )
