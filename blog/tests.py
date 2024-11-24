@@ -33,7 +33,7 @@ class BlogTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_url_exists_at_correct_location_detailview(self):
-        response = self.client.get("/post/1/")
+        response = self.client.get("/post/1")
         self.assertEqual(response.status_code, 200)
 
     def test_post_listview(self):
