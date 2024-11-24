@@ -41,3 +41,11 @@ class BlogTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Creating a nice body for you")
         self.assertTemplateUsed(response, "home.html")
+
+    def test_post_detailview(self):
+        response = self.client.get(reverse("post_detail", kwargs={"pk": self.post.pk}))
+        no_response = self.client.get("/post/10000")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(no_response.status_code, 404)
+        self.assertContains(response, "A good title")
+        self.assertTemplateUsed(response, "post_detail.html")
