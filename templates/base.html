@@ -25,6 +25,11 @@
         <p>Are you sure you want to Log Out?</p>
         <input type="submit" value="Logout" />
       </form>
+      <p>
+        <a href="{% url 'signup' %}"
+          >You don't have an account? Register here</a
+        >
+      </p>
       {% else %}
       <p>You are not logged in. You want to login?</p>
       <a href="{% url 'login' %}">Log In</a>
