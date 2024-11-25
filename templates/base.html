@@ -20,7 +20,11 @@
       </header>
       {% if user.is_authenticated %}
       <p>Hi {{user.username}}!</p>
-      <p><a href="{% url 'logout %'}">Log Out</a></p>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to Log Out?</p>
+        <input type="submit" value="Logout" />
+      </form>
       {% else %}
       <p>You are not logged in. You want to login?</p>
       <a href="{% url 'login' %}">Log In</a>
